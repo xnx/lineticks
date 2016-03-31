@@ -6,6 +6,6 @@ It's a bit simple and requires the indexes of the data points on which to add ti
 
 To use it, create a `LineTicks` instance, passing the Matplotlib `Line2D` object to be ticked, a sequence of indexes, `idx`, into the underlying data array for the points to add tick marks to, and a length (in display units), `tick_length`, for the tick marks themselves. The argument `direction` may be 1 or -1 for ticks oriented +90° or -90° from the line. To add tick labels, pass a sequence of strings, the same length as `idx` to `label`.
 
-Some example applications are given in this repository.
+Some example applications are given in this repository. For example, `projectile-trajectory.py` plots the trajectory of a projectile with tickmarks representing times:
 
-
+![A ticked projectile trajectory](http://scipython.com/static/media/blog/lineticks/projectile-trajectory.png)
