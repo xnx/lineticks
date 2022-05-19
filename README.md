@@ -9,3 +9,5 @@ To use it, create a `LineTicks` instance, passing the Matplotlib `Line2D` object
 Some example applications are given in this repository. For example, `projectile-trajectory.py` plots the trajectory of a projectile with tickmarks representing times:
 
 ![A ticked projectile trajectory](http://scipython.com/static/media/blog/lineticks/projectile-trajectory.png)
+
+This project is released under the terms of the [Apache 2.0 licence](https://www.apache.org/licenses/LICENSE-2.0).
