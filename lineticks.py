@@ -54,7 +54,7 @@ class LineTicks:
             z =ax.transData.transform(np.array(self.line.get_data()).T)
         except:
             z = ax.transData.transform(np.array(self.line.get_lines()[0].get_data()).T)
-            x, y = zip(*z)
+        x, y = zip(*z)
 
         # Remove existing ticks
         for tick in self.ticks:
