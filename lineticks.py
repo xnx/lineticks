@@ -34,8 +34,12 @@ class LineTicks:
         self.tick_styles = kwargs
         # If no colour is specified for the ticks, set it to the line colour
         if not set(('c', 'color')).intersection(kwargs.keys()):
-            self.tick_styles['color'] = self.line.get_color()
-
+            #Try for axes object, otherwise use method for subplots
+            try:
+                self.tick_styles['color'] = self.line.get_color()
+            except:
+                self.tick_styles['color'] = self.line.get_lines()[0].get_color()
+                
         self.ax = line.axes
         self.ax.callbacks.connect('xlim_changed', self.on_change_lims)
         self.ax.callbacks.connect('ylim_changed', self.on_change_lims)
@@ -45,8 +49,12 @@ class LineTicks:
     def add_ticks(self, ax):
         ax.set_autoscale_on(False)  # Otherwise, infinite loop
         # Transform to  display coordinates
-        z =ax.transData.transform(np.array(self.line.get_data()).T)
-        x, y = zip(*z)
+        # Try for axes object, otherwise use method for subplots
+        try:
+            z =ax.transData.transform(np.array(self.line.get_data()).T)
+        except:
+            z = ax.transData.transform(np.array(self.line.get_lines()[0].get_data()).T)
+            x, y = zip(*z)
 
         # Remove existing ticks
         for tick in self.ticks:
